@@ -3,6 +3,4 @@ name = "group13-softsec"
 version = "0.1.0"
 dependencies = [
     "flask",
-    "jsonify",
-    "request"
 ]
