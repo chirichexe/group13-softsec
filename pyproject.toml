@@ -15,5 +15,12 @@ dev = [
 line-length = 88
 target-version = "py312"
 
+
+# E: pycodestyle errors e.g., whitespace, line length, indentation, trailing spaces)
+# F: Pyflakes, logical and syntax errors without running the code (e.g., unused imports/variables, undefined names, duplicate keys)
+# I: isort, the import sorting and categorization in alphabetical order
 [tool.ruff.lint]
 select = ["E", "F", "I"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

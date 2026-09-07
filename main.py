@@ -11,15 +11,14 @@ def hello():
 
 @app.route("/calc", methods=["POST"])
 def calc():
-    data = request.get_json()
+    data = request.get_json(silent=True)
 
     if data is None or "expression" not in data:
         return jsonify({"error": "expression is required"}), 400
 
     expression = data["expression"]
 
-    # Temporary mock until the Calculator branch is merged
-    result = calculator.calc(expression)
+    result = calculator(expression)
 
     return jsonify({
         "expression": expression,
