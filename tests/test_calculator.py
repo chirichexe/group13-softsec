@@ -1,8 +1,8 @@
 import pytest
-
 from calculator import calculator
 
 
+# Verify simple arithmetic evaluation, operator precedence, and whitespace trimming
 @pytest.mark.parametrize(
     ("expression", "expected"),
     [
@@ -16,6 +16,8 @@ def test_calculator_evaluates_valid_expressions(expression, expected):
     assert calculator(expression) == expected
 
 
+# Verify rejection of empty strings, non-whitelisted characters, 
+# syntax errors and zero division.
 @pytest.mark.parametrize(
     "expression",
     [
@@ -32,6 +34,7 @@ def test_calculator_rejects_invalid_expressions(expression):
         calculator(expression)
 
 
+# Verify explicit type validation when input is not a string.
 def test_calculator_rejects_non_string_input():
     with pytest.raises(ValueError, match="Input must be a string"):
         calculator(42)
