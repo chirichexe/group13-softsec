@@ -1,4 +1,5 @@
 import pytest
+
 from main import app
 
 
@@ -18,7 +19,8 @@ def test_hello_endpoint(client):
     assert res.get_json() == {"message": "Hello world!"}
 
 
-# 2. Verify the POST /calc route correctly computes and formats a valid expression payload.
+# 2. Verify the POST /calc route correctly computes and formats a valid
+# expression payload.
 def test_calc_success(client):
     res = client.post("/calc", json={"expression": "10 * (2 + 3)"})
     assert res.status_code == 200
@@ -54,7 +56,8 @@ def test_calc_non_json_body(client):
     assert res.get_json() == {"error": "expression is required"}
 
 
-# 4. Document that unhandled calculator ValueError exceptions propagate through Flask during testing.
+# 4. Document that unhandled calculator ValueError exceptions propagate
+# through Flask during testing.
 @pytest.mark.parametrize("invalid_expr", ["3 + a", "open('file')", "10 / 0"])
 def test_calc_unhandled_calculator_error_bubbles_exception(client, invalid_expr):
     with pytest.raises(ValueError):
