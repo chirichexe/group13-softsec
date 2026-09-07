@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, request
 
+from calculator import calculator
+
 app = Flask(__name__)
 
 @app.route("/hello", methods=["GET"])
