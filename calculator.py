@@ -2,6 +2,7 @@ import re
 
 ALLOWED_ARITHMETIC_REGEX = re.compile(r"^[\d\s+\-*/().]+$")
 
+
 def calculator(expr: str) -> str:
     """Evaluate an expression and return the result."""
     if not isinstance(expr, str):
@@ -18,4 +19,4 @@ def calculator(expr: str) -> str:
         result = eval(clean_expr)
         return str(result)
     except Exception as e:
-        raise ValueError(f"Invalid expression")
+        raise ValueError("Invalid expression") from e
